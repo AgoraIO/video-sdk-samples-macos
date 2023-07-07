@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914F36A52A549568009EBD9E /* AIAEC in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36A42A549568009EBD9E /* AIAEC */; };
+		914F36A72A549568009EBD9E /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36A62A549568009EBD9E /* AINS */; };
+		914F36A92A549568009EBD9E /* AudioBeauty in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36A82A549568009EBD9E /* AudioBeauty */; };
+		914F36AB2A549568009EBD9E /* ClearVision in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36AA2A549568009EBD9E /* ClearVision */; };
+		914F36AD2A549568009EBD9E /* ContentInspect in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36AC2A549568009EBD9E /* ContentInspect */; };
+		914F36AF2A549568009EBD9E /* DRM in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36AE2A549568009EBD9E /* DRM */; };
+		914F36B12A549568009EBD9E /* FaceDetection in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36B02A549568009EBD9E /* FaceDetection */; };
+		914F36B32A549568009EBD9E /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36B22A549568009EBD9E /* RtcBasic */; };
+		914F36B52A549568009EBD9E /* ScreenCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36B42A549568009EBD9E /* ScreenCapture */; };
+		914F36B72A549568009EBD9E /* SpatialAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36B62A549568009EBD9E /* SpatialAudio */; };
+		914F36B92A549568009EBD9E /* VQA in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36B82A549568009EBD9E /* VQA */; };
+		914F36BB2A549568009EBD9E /* VideoCodecDec in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36BA2A549568009EBD9E /* VideoCodecDec */; };
+		914F36BD2A549568009EBD9E /* VideoCodecEnc in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36BC2A549568009EBD9E /* VideoCodecEnc */; };
+		914F36BF2A549568009EBD9E /* VirtualBackground in Frameworks */ = {isa = PBXBuildFile; productRef = 914F36BE2A549568009EBD9E /* VirtualBackground */; };
+		91DEC6E12A571A0800C80CCF /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E02A571A0800C80CCF /* AgoraManager.swift */; };
+		91DEC6E22A571A0800C80CCF /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E02A571A0800C80CCF /* AgoraManager.swift */; };
+		91DEC6E42A571A1800C80CCF /* AgoraVideoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E32A571A1800C80CCF /* AgoraVideoCanvasView.swift */; };
+		91DEC6E52A571A1800C80CCF /* AgoraVideoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E32A571A1800C80CCF /* AgoraVideoCanvasView.swift */; };
+		91DEC6E72A571A2100C80CCF /* DocsAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E62A571A2100C80CCF /* DocsAppConfig.swift */; };
+		91DEC6E82A571A2100C80CCF /* DocsAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DEC6E62A571A2100C80CCF /* DocsAppConfig.swift */; };
+		91DEC6EA2A571B4B00C80CCF /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 91DEC6E92A571B4B00C80CCF /* config.json */; };
+		91DEC6EB2A571B4B00C80CCF /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 91DEC6E92A571B4B00C80CCF /* config.json */; };
 		F310F63829C8D02E006DB727 /* Docs_ExamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310F63729C8D02E006DB727 /* Docs_ExamplesApp.swift */; };
 		F310F63A29C8D02E006DB727 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310F63929C8D02E006DB727 /* ContentView.swift */; };
 		F310F63C29C8D031006DB727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F310F63B29C8D031006DB727 /* Assets.xcassets */; };
@@ -15,7 +37,6 @@
 		F344ED9B2A45942B00B3C313 /* CustomAudioVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344ED992A45942A00B3C313 /* CustomAudioVideoView.swift */; };
 		F344ED9E2A494CE700B3C313 /* CustomCameraInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344ED9D2A494CE700B3C313 /* CustomCameraInputView.swift */; };
 		F344EDA02A496FF400B3C313 /* AgoraCustomVideoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344ED9F2A496FF400B3C313 /* AgoraCustomVideoCanvasView.swift */; };
-		F348B3972A4D7BDC00AF6B9B /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = F348B3962A4D7BDC00AF6B9B /* config.json */; };
 		F3A88CCE2A1DE629000B2292 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A88CCC2A1DE629000B2292 /* GettingStartedView.swift */; };
 		F3A88CD42A1DE645000B2292 /* CallQualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A88CD22A1DE645000B2292 /* CallQualityView.swift */; };
 		F3A88CD92A1DE663000B2292 /* TokenAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A88CD72A1DE663000B2292 /* TokenAuthenticationView.swift */; };
@@ -23,15 +44,8 @@
 		F3A88CEB2A1E0405000B2292 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A88CEA2A1E0405000B2292 /* ReplayKit.framework */; };
 		F3A88CEE2A1E0405000B2292 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A88CED2A1E0405000B2292 /* SampleHandler.swift */; };
 		F3A88CF32A1E0405000B2292 /* screenSharer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A88CE82A1E0405000B2292 /* screenSharer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F3A88CFB2A1E0AF1000B2292 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = F3A88CFA2A1E0AF1000B2292 /* RtcBasic */; };
 		F3A88CFD2A1E17E0000B2292 /* RPSystemBroadcastPickerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A88CFC2A1E17E0000B2292 /* RPSystemBroadcastPickerWrapper.swift */; };
-		F3C06BB32A4D85FC00F59BC2 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = F348B3962A4D7BDC00AF6B9B /* config.json */; };
-		F3C06BB52A4D861200F59BC2 /* DocsAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C06BB42A4D861200F59BC2 /* DocsAppConfig.swift */; };
-		F3C06BB62A4D863B00F59BC2 /* DocsAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C06BB42A4D861200F59BC2 /* DocsAppConfig.swift */; };
-		F3C571C229C8E50E0002B322 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = F3C571C129C8E50E0002B322 /* RtcBasic */; };
 		F3CA2CDB29C97AF400561441 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = F3CA2CDA29C97AF400561441 /* Documentation.docc */; };
-		F3CA2CE429CB00F400561441 /* AgoraVideoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CA2CE329CB00F400561441 /* AgoraVideoCanvasView.swift */; };
-		F3D7BD4729DB30680014DEC0 /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7BD4629DB30680014DEC0 /* AgoraManager.swift */; };
 		F3D7BD4F29DB42D00014DEC0 /* ChannelInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7BD4E29DB42D00014DEC0 /* ChannelInputView.swift */; };
 		F3D7BD5129DB46BB0014DEC0 /* TokenAuthInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7BD5029DB46BB0014DEC0 /* TokenAuthInputView.swift */; };
 		F3E8E6F42A42E56E00E6B774 /* MediaEncryptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8E6F22A42E56E00E6B774 /* MediaEncryptionView.swift */; };
@@ -65,6 +79,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		91DEC6E02A571A0800C80CCF /* AgoraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
+		91DEC6E32A571A1800C80CCF /* AgoraVideoCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraVideoCanvasView.swift; sourceTree = "<group>"; };
+		91DEC6E62A571A2100C80CCF /* DocsAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocsAppConfig.swift; sourceTree = "<group>"; };
+		91DEC6E92A571B4B00C80CCF /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		F310F63429C8D02E006DB727 /* Docs-Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Docs-Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F310F63729C8D02E006DB727 /* Docs_ExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Docs_ExamplesApp.swift; sourceTree = "<group>"; };
 		F310F63929C8D02E006DB727 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +93,6 @@
 		F344ED9C2A45943400B3C313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../../../custom-video-and-audio/README.md"; sourceTree = "<group>"; };
 		F344ED9D2A494CE700B3C313 /* CustomCameraInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCameraInputView.swift; sourceTree = "<group>"; };
 		F344ED9F2A496FF400B3C313 /* AgoraCustomVideoCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AgoraCustomVideoCanvasView.swift; path = "../../../../custom-video-and-audio/AgoraCustomVideoCanvasView.swift"; sourceTree = "<group>"; };
-		F348B3962A4D7BDC00AF6B9B /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = ../AgoraManager/config.json; sourceTree = SOURCE_ROOT; };
 		F372069829C8EE420029EEC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F3A88CCC2A1DE629000B2292 /* GettingStartedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GettingStartedView.swift; path = "../../../../get-started-sdk/GettingStartedView.swift"; sourceTree = "<group>"; };
 		F3A88CCD2A1DE629000B2292 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../../../get-started-sdk/README.md"; sourceTree = "<group>"; };
@@ -92,10 +109,7 @@
 		F3A88CF82A1E05F1000B2292 /* Docs-Examples.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Docs-Examples.entitlements"; sourceTree = "<group>"; };
 		F3A88CF92A1E0627000B2292 /* screenSharer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = screenSharer.entitlements; sourceTree = "<group>"; };
 		F3A88CFC2A1E17E0000B2292 /* RPSystemBroadcastPickerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RPSystemBroadcastPickerWrapper.swift; path = "../../../../product-workflow/RPSystemBroadcastPickerWrapper.swift"; sourceTree = "<group>"; };
-		F3C06BB42A4D861200F59BC2 /* DocsAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DocsAppConfig.swift; path = ../../../../AgoraManager/DocsAppConfig.swift; sourceTree = "<group>"; };
 		F3CA2CDA29C97AF400561441 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		F3CA2CE329CB00F400561441 /* AgoraVideoCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgoraVideoCanvasView.swift; path = ../../../../AgoraManager/AgoraVideoCanvasView.swift; sourceTree = "<group>"; };
-		F3D7BD4629DB30680014DEC0 /* AgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgoraManager.swift; path = ../../../../AgoraManager/AgoraManager.swift; sourceTree = "<group>"; };
 		F3D7BD4E29DB42D00014DEC0 /* ChannelInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInputView.swift; sourceTree = "<group>"; };
 		F3D7BD5029DB46BB0014DEC0 /* TokenAuthInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthInputView.swift; sourceTree = "<group>"; };
 		F3E8E6F12A42E56E00E6B774 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../../../media-stream-encryption/README.md"; sourceTree = "<group>"; };
@@ -111,7 +125,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C571C229C8E50E0002B322 /* RtcBasic in Frameworks */,
+				914F36AF2A549568009EBD9E /* DRM in Frameworks */,
+				914F36BD2A549568009EBD9E /* VideoCodecEnc in Frameworks */,
+				914F36A92A549568009EBD9E /* AudioBeauty in Frameworks */,
+				914F36B92A549568009EBD9E /* VQA in Frameworks */,
+				914F36B12A549568009EBD9E /* FaceDetection in Frameworks */,
+				914F36B32A549568009EBD9E /* RtcBasic in Frameworks */,
+				914F36AD2A549568009EBD9E /* ContentInspect in Frameworks */,
+				914F36BB2A549568009EBD9E /* VideoCodecDec in Frameworks */,
+				914F36BF2A549568009EBD9E /* VirtualBackground in Frameworks */,
+				914F36A52A549568009EBD9E /* AIAEC in Frameworks */,
+				914F36B52A549568009EBD9E /* ScreenCapture in Frameworks */,
+				914F36AB2A549568009EBD9E /* ClearVision in Frameworks */,
+				914F36B72A549568009EBD9E /* SpatialAudio in Frameworks */,
+				914F36A72A549568009EBD9E /* AINS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A88CEB2A1E0405000B2292 /* ReplayKit.framework in Frameworks */,
-				F3A88CFB2A1E0AF1000B2292 /* RtcBasic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,10 +300,10 @@
 		F3CA2CE229CB00C900561441 /* AgoraManager */ = {
 			isa = PBXGroup;
 			children = (
-				F348B3962A4D7BDC00AF6B9B /* config.json */,
-				F3D7BD4629DB30680014DEC0 /* AgoraManager.swift */,
-				F3C06BB42A4D861200F59BC2 /* DocsAppConfig.swift */,
-				F3CA2CE329CB00F400561441 /* AgoraVideoCanvasView.swift */,
+				91DEC6E92A571B4B00C80CCF /* config.json */,
+				91DEC6E62A571A2100C80CCF /* DocsAppConfig.swift */,
+				91DEC6E32A571A1800C80CCF /* AgoraVideoCanvasView.swift */,
+				91DEC6E02A571A0800C80CCF /* AgoraManager.swift */,
 			);
 			path = AgoraManager;
 			sourceTree = "<group>";
@@ -320,7 +346,20 @@
 			);
 			name = "Docs-Examples";
 			packageProductDependencies = (
-				F3C571C129C8E50E0002B322 /* RtcBasic */,
+				914F36A42A549568009EBD9E /* AIAEC */,
+				914F36A62A549568009EBD9E /* AINS */,
+				914F36A82A549568009EBD9E /* AudioBeauty */,
+				914F36AA2A549568009EBD9E /* ClearVision */,
+				914F36AC2A549568009EBD9E /* ContentInspect */,
+				914F36AE2A549568009EBD9E /* DRM */,
+				914F36B02A549568009EBD9E /* FaceDetection */,
+				914F36B22A549568009EBD9E /* RtcBasic */,
+				914F36B42A549568009EBD9E /* ScreenCapture */,
+				914F36B62A549568009EBD9E /* SpatialAudio */,
+				914F36B82A549568009EBD9E /* VQA */,
+				914F36BA2A549568009EBD9E /* VideoCodecDec */,
+				914F36BC2A549568009EBD9E /* VideoCodecEnc */,
+				914F36BE2A549568009EBD9E /* VirtualBackground */,
 			);
 			productName = "Docs-Examples";
 			productReference = F310F63429C8D02E006DB727 /* Docs-Examples.app */;
@@ -340,7 +379,6 @@
 			);
 			name = screenSharer;
 			packageProductDependencies = (
-				F3A88CFA2A1E0AF1000B2292 /* RtcBasic */,
 			);
 			productName = screenSharer;
 			productReference = F3A88CE82A1E0405000B2292 /* screenSharer.appex */;
@@ -374,7 +412,7 @@
 			);
 			mainGroup = F310F62B29C8D02E006DB727;
 			packageReferences = (
-				F3C571C029C8E50E0002B322 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */,
 			);
 			productRefGroup = F310F63529C8D02E006DB727 /* Products */;
 			projectDirPath = "";
@@ -393,7 +431,7 @@
 			files = (
 				F310F63F29C8D031006DB727 /* Preview Assets.xcassets in Resources */,
 				F310F63C29C8D031006DB727 /* Assets.xcassets in Resources */,
-				F348B3972A4D7BDC00AF6B9B /* config.json in Resources */,
+				91DEC6EA2A571B4B00C80CCF /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C06BB32A4D85FC00F59BC2 /* config.json in Resources */,
+				91DEC6EB2A571B4B00C80CCF /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,19 +479,19 @@
 				F3E8E6F42A42E56E00E6B774 /* MediaEncryptionView.swift in Sources */,
 				F344ED9A2A45942B00B3C313 /* AgoraCameraSourcePush.swift in Sources */,
 				F310F63A29C8D02E006DB727 /* ContentView.swift in Sources */,
-				F3D7BD4729DB30680014DEC0 /* AgoraManager.swift in Sources */,
 				F344EDA02A496FF400B3C313 /* AgoraCustomVideoCanvasView.swift in Sources */,
 				F3A88CCE2A1DE629000B2292 /* GettingStartedView.swift in Sources */,
 				F3CA2CDB29C97AF400561441 /* Documentation.docc in Sources */,
+				91DEC6E12A571A0800C80CCF /* AgoraManager.swift in Sources */,
 				F3A88CFD2A1E17E0000B2292 /* RPSystemBroadcastPickerWrapper.swift in Sources */,
+				91DEC6E72A571A2100C80CCF /* DocsAppConfig.swift in Sources */,
 				F3E8E6FD2A43E8AD00E6B774 /* EncryptionKeysInputView.swift in Sources */,
-				F3C06BB52A4D861200F59BC2 /* DocsAppConfig.swift in Sources */,
 				F3E8E6F92A42EAD100E6B774 /* CloudProxyView.swift in Sources */,
 				F3E8E6FB2A42F60500E6B774 /* ProxyInputView.swift in Sources */,
 				F310F63829C8D02E006DB727 /* Docs_ExamplesApp.swift in Sources */,
 				F3A88CE22A1DF2F1000B2292 /* ScreenShareAndVolumeView.swift in Sources */,
+				91DEC6E42A571A1800C80CCF /* AgoraVideoCanvasView.swift in Sources */,
 				F344ED9E2A494CE700B3C313 /* CustomCameraInputView.swift in Sources */,
-				F3CA2CE429CB00F400561441 /* AgoraVideoCanvasView.swift in Sources */,
 				F344ED9B2A45942B00B3C313 /* CustomAudioVideoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,8 +500,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C06BB62A4D863B00F59BC2 /* DocsAppConfig.swift in Sources */,
+				91DEC6E22A571A0800C80CCF /* AgoraManager.swift in Sources */,
 				F3A88CEE2A1E0405000B2292 /* SampleHandler.swift in Sources */,
+				91DEC6E82A571A2100C80CCF /* DocsAppConfig.swift in Sources */,
+				91DEC6E52A571A1800C80CCF /* AgoraVideoCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +572,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -585,7 +625,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -602,7 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Docs-Examples/Preview Content\"";
-				DEVELOPMENT_TEAM = 278494H572;
+				DEVELOPMENT_TEAM = 2CXKPLPR2S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Docs-Examples/Info.plist";
@@ -618,7 +658,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.rocketar.Docs-Examples.example";
+				PRODUCT_BUNDLE_IDENTIFIER = "agora.Docs-Examples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -636,7 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Docs-Examples/Preview Content\"";
-				DEVELOPMENT_TEAM = 278494H572;
+				DEVELOPMENT_TEAM = 2CXKPLPR2S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Docs-Examples/Info.plist";
@@ -652,7 +692,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.rocketar.Docs-Examples.example";
+				PRODUCT_BUNDLE_IDENTIFIER = "agora.Docs-Examples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -666,7 +706,7 @@
 				CODE_SIGN_ENTITLEMENTS = screenSharer/screenSharer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 278494H572;
+				DEVELOPMENT_TEAM = 2CXKPLPR2S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = screenSharer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = screenSharer;
@@ -677,8 +717,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.rocketar.Docs-Examples.example.screenSharer";
+				PRODUCT_BUNDLE_IDENTIFIER = "agora.Docs-Examples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -693,7 +734,7 @@
 				CODE_SIGN_ENTITLEMENTS = screenSharer/screenSharer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 278494H572;
+				DEVELOPMENT_TEAM = 2CXKPLPR2S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = screenSharer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = screenSharer;
@@ -704,8 +745,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.rocketar.Docs-Examples.example.screenSharer";
+				PRODUCT_BUNDLE_IDENTIFIER = "agora.Docs-Examples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -747,9 +789,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F3C571C029C8E50E0002B322 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+		914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS";
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_macOS.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
@@ -758,15 +800,75 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F3A88CFA2A1E0AF1000B2292 /* RtcBasic */ = {
+		914F36A42A549568009EBD9E /* AIAEC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3C571C029C8E50E0002B322 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = AIAEC;
+		};
+		914F36A62A549568009EBD9E /* AINS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = AINS;
+		};
+		914F36A82A549568009EBD9E /* AudioBeauty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = AudioBeauty;
+		};
+		914F36AA2A549568009EBD9E /* ClearVision */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = ClearVision;
+		};
+		914F36AC2A549568009EBD9E /* ContentInspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = ContentInspect;
+		};
+		914F36AE2A549568009EBD9E /* DRM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = DRM;
+		};
+		914F36B02A549568009EBD9E /* FaceDetection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = FaceDetection;
+		};
+		914F36B22A549568009EBD9E /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
 			productName = RtcBasic;
 		};
-		F3C571C129C8E50E0002B322 /* RtcBasic */ = {
+		914F36B42A549568009EBD9E /* ScreenCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3C571C029C8E50E0002B322 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
-			productName = RtcBasic;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = ScreenCapture;
+		};
+		914F36B62A549568009EBD9E /* SpatialAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = SpatialAudio;
+		};
+		914F36B82A549568009EBD9E /* VQA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = VQA;
+		};
+		914F36BA2A549568009EBD9E /* VideoCodecDec */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = VideoCodecDec;
+		};
+		914F36BC2A549568009EBD9E /* VideoCodecEnc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = VideoCodecEnc;
+		};
+		914F36BE2A549568009EBD9E /* VirtualBackground */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 914F36A32A549568009EBD9E /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
+			productName = VirtualBackground;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

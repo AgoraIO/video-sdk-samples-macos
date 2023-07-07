@@ -1,8 +1,8 @@
 {
     "uid": 0,
-    "channel": "test",
-    "appId": "",
-    "rtcToken": "",
+    "channel": "<your_channel>",
+    "appId": "<your_app_id>",
+    "rtcToken": "<your_rtc_token>",
     "tokenUrl": "",
     "signalingToken": "",
     "encryptionMode": 7,

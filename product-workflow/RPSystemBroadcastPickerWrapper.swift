@@ -8,15 +8,13 @@
 import SwiftUI
 import ReplayKit
 
-struct RPSystemBroadcastPickerWrapper: UIViewRepresentable {
-
+struct RPSystemBroadcastPickerWrapper: NSViewRepresentable {
     var preferredExtension: String?
 
-    func makeUIView(context: Context) -> RPSystemBroadcastPickerView {
-        let broadcastPicker = RPSystemBroadcastPickerView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        broadcastPicker.preferredExtension = preferredExtension
+    func makeNSView(context: Context) -> NSView {
+        let broadcastPicker = NSView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         return broadcastPicker
     }
 
-    func updateUIView(_ uiView: RPSystemBroadcastPickerView, context: Context) {}
+    func updateNSView(_ nsView: NSView, context: Context) {}
 }

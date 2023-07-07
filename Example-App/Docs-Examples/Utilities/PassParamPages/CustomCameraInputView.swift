@@ -29,7 +29,7 @@ public struct CustomCameraInputView<Content: HasCustomVideoInput>: View {
     /// The channel ID entered by the user.
     @State private var channelId: String = DocsAppConfig.shared.channel
     var availableCams = AVCaptureDevice.DiscoverySession(
-        deviceTypes: [.builtInWideAngleCamera, .builtInUltraWideCamera, .builtInTelephotoCamera], mediaType: .video, position: .back
+        deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back
     ).devices
 
     @State var selectedCamera: Int = 0

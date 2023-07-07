@@ -5,7 +5,7 @@
 //  Created by Max Cobb on 23/06/2023.
 //
 
-import UIKit
+import AppKit
 import AVFoundation
 import AgoraRtcKit
 
@@ -48,7 +48,6 @@ open class AgoraCameraSourcePush: NSObject {
         self.delegate = delegate
 
         self.captureSession = AVCaptureSession()
-        self.captureSession.usesApplicationAudioSession = false
 
         let captureOutput = AVCaptureVideoDataOutput()
         captureOutput.videoSettings = [
@@ -159,35 +158,6 @@ extension AgoraCameraSourcePush: AVCaptureVideoDataOutputSampleBufferDelegate {
             #endif
 
             self?.delegate?.myVideoCapture(pixelBuffer, rotation: imgRot, timeStamp: time)
-        }
-    }
-}
-
-/// An extension of UIDeviceOrientation that provides utility methods for capturing video orientation.
-internal extension UIDeviceOrientation {
-    /// Converts the UIDeviceOrientation to AVCaptureVideoOrientation.
-    ///
-    /// - Returns: The corresponding AVCaptureVideoOrientation value.
-    func toCaptureVideoOrientation() -> AVCaptureVideoOrientation {
-        switch self {
-        case .portrait: return .portrait
-        case .portraitUpsideDown: return .portraitUpsideDown
-        case .landscapeLeft: return .landscapeLeft
-        case .landscapeRight: return .landscapeRight
-        default: return .portrait
-        }
-    }
-
-    /// Converts the UIDeviceOrientation to an integer rotation value.
-    ///
-    /// - Returns: The corresponding rotation value in degrees.
-    var intRotation: Int {
-        switch self {
-        case .portrait: return 90
-        case .landscapeLeft: return 0
-        case .landscapeRight: return 180
-        case .portraitUpsideDown: return -90
-        default: return 90
         }
     }
 }
