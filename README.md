@@ -1,4 +1,4 @@
-# Video SDK for iOS code examples
+# Video SDK for macOS code examples
 
 Use the contents in this repo to compare the following ways of presenting runnable code examples in an open source 
 repository. In all examples, the code corresponds to a page in the Agora developer documentation. 

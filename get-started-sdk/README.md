@@ -20,4 +20,4 @@ Creating a canvas for local or remote users in this project and example with Ago
 
 ## Full Documentation
 
-[Agora's full SDK Quickstart Guide](https://docs.agora.io/en/interactive-live-streaming/get-started/get-started-sdk?platform=ios)
+[Agora's full SDK Quickstart Guide](https://docs.agora.io/en/interactive-live-streaming/get-started/get-started-sdk?platform=macos)
