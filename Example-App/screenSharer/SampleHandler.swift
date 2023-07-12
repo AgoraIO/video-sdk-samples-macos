@@ -30,14 +30,14 @@ class SampleHandler: RPBroadcastSampleHandler, AgoraRtcEngineDelegate {
 
     // Get the screen size and orientation
     private let videoDimension: CGSize = {
-        let screenSize = UIScreen.main.currentMode!.size
+        let screenSize = NSScreen.main?.frame
         var boundingSize = CGSize(width: 540, height: 980)
-        let vidWidth = boundingSize.width / screenSize.width
-        let vidHeight = boundingSize.height / screenSize.height
+        let vidWidth = boundingSize.width / screenSize!.width
+        let vidHeight = boundingSize.height / screenSize!.height
         if vidHeight < vidWidth {
-            boundingSize.width = boundingSize.height / screenSize.height * screenSize.width
+            boundingSize.width = boundingSize.height / screenSize!.height * screenSize!.width
         } else if vidWidth < vidHeight {
-            boundingSize.height = boundingSize.width / screenSize.width * screenSize.height
+            boundingSize.height = boundingSize.width / screenSize!.width * screenSize!.height
         }
         return boundingSize
     }()

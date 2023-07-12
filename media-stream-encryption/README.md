@@ -12,5 +12,5 @@ The only things needed to add in this section is a secret encryption key and sal
 
 ## Full Documentation
 
-[Agora's full token authentication guide](https://docs.agora.io/en/interactive-live-streaming/develop/media-stream-encryption?platform=ios)
+[Agora's full token authentication guide](https://docs.agora.io/en/interactive-live-streaming/develop/media-stream-encryption?platform=macos)
 
