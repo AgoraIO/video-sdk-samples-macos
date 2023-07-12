@@ -26,5 +26,5 @@ Once choosing a proxy type, you need to call `agoraEngine.setCloudProxy` with yo
 
 ## Full Documentation
 
-[Agora's full token authentication guide](https://docs.agora.io/en/interactive-live-streaming/develop/cloud-proxy?platform=ios)
+[Agora's full token authentication guide](https://docs.agora.io/en/interactive-live-streaming/develop/cloud-proxy?platform=macos)
 
