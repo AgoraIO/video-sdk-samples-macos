@@ -812,7 +812,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F35967172A5C35FE005CEE79 /* RtcBasic */ = {
 		9110684A2A5DC229000954F2 /* AIAEC */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 911068492A5DC229000954F2 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
@@ -853,12 +852,6 @@
 			package = 911068492A5DC229000954F2 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
 			productName = RtcBasic;
 		};
-		F35967312A5C3A66005CEE79 /* ReplayKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3C571C029C8E50E0002B322 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
-			productName = ReplayKit;
-		};
-		F3C571C129C8E50E0002B322 /* RtcBasic */ = {
 		9110685A2A5DC229000954F2 /* ScreenCapture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 911068492A5DC229000954F2 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_macOS" */;
