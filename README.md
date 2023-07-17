@@ -23,6 +23,18 @@ To run the example project in this folder, take the following steps:
     git clone https://github.com/AgoraIO/video-sdk-samples-macos.git
     ```
 
+    If you are using a device using the ARM architecture (e.g. MacBook Air M1, M2) take the following additional steps:
+
+    1. Download the latest jq binary for macOS from their [official website](https://jqlang.github.io/jq/download/) and save it on the `/Documents` folder.
+
+    1. Open a terminal window and input the following command:
+
+    ```bash
+    sudo ln -s /Users/<your_macos_user_name>/Documents/<file_name_of_downloaded_jq> jq
+    ```
+
+    1. Restart your device for the changes to take effect.
+
 1. Launch Xcode. From the **File** menu, select **Open...**, then choose the folder for the sample project you want to run. Wait for dependency installations to complete.
 
 1. Open the `config.json` file inside the `AgoraManager` directory and update the values to match your configurations.
