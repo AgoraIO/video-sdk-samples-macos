@@ -35,6 +35,18 @@ public extension AgoraManager {
 
         return tokenResponse.rtcToken
     }
+    
+    func rtcEngine(
+        _ engine: AgoraRtcEngineKit, tokenPrivilegeWillExpire token: String
+    ) {
+        Task {
+            if let token = try? await fetchToken(
+                from: DocsAppConfig.shared.tokenUrl,
+                channel: DocsAppConfig.shared.channel,
+                role: .broadcaster
+            ) { self.agoraEngine.renewToken(token) }
+        }
+    }
 }
 
 /// A Codable struct representing the token server response.
