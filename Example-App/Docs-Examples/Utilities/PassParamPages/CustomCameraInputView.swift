@@ -24,7 +24,7 @@ struct CustomCameraInputView<Content: HasCustomVideoInput>: View {
     /// The channel ID entered by the user.
     @State private var channelId: String = DocsAppConfig.shared.channel
     var availableCams = AVCaptureDevice.DiscoverySession(
-        deviceTypes: [.builtInWideAngleCamera, .builtInUltraWideCamera, .builtInTelephotoCamera],
+        deviceTypes: [.builtInWideAngleCamera],
         mediaType: .video, position: .back
     ).devices
 
@@ -48,7 +48,7 @@ struct CustomCameraInputView<Content: HasCustomVideoInput>: View {
                     channelId: channelId.trimmingCharacters(in: .whitespaces),
                     customCamera: availableCams[selectedCamera]
                 ).navigationTitle(continueTo.docTitle).toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem() {
                         GitHubButtonView(continueTo.docPath)
                     }
                 }), label: {

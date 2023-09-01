@@ -11,7 +11,7 @@ private enum VirtualBackgroundType: String, Equatable, CaseIterable, Identifiabl
     case image
 }
 
-private func convertUIColorToHex(_ color: UIColor) -> UInt {
+private func convertNSColorToHex(_ color: NSColor) -> UInt {
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0
@@ -43,7 +43,7 @@ public class VirtualBackgroundManager: AgoraManager {
             virtualBackgroundSource.blurDegree = .high
         case .color:
             virtualBackgroundSource.backgroundSourceType = .color
-            virtualBackgroundSource.color = convertUIColorToHex(.red)
+            virtualBackgroundSource.color = convertNSColorToHex(.red)
         case .image:
             virtualBackgroundSource.backgroundSourceType = .img
             virtualBackgroundSource.source = Bundle.main.path(forResource: "background_ss", ofType: "jpg")

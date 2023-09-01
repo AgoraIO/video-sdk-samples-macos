@@ -24,13 +24,13 @@ public protocol CanvasViewHelper: AnyObject {
 // Add the `CanvasViewHelper` protocol to AgoraManager. 
 extension AgoraManager: CanvasViewHelper {}
 
-/// AgoraVideoCanvasView is a UIViewRepresentable struct that provides a view
+/// AgoraVideoCanvasView is a NSViewRepresentable struct that provides a view
 /// for displaying remote or local video in an Agora RTC session.
 ///
 /// Use AgoraVideoCanvasView to create a view that displays the video stream from a remote user
 /// or the local user's camera in an Agora RTC session.
 /// You can specify the render mode, crop area, and setup mode for the view.
-public struct AgoraVideoCanvasView: UIViewRepresentable {
+public struct AgoraVideoCanvasView: NSViewRepresentable {
     /// The `AgoraRtcVideoCanvas` object that represents the video canvas for the view.
     @StateObject var canvas = AgoraRtcVideoCanvas()
 
@@ -191,17 +191,17 @@ public struct AgoraVideoCanvasView: UIViewRepresentable {
         self.canvasProperties = canvasProps
     }
 
-    /// Creates and configures a `UIView` for the view. This UIView will be the view the video is rendered onto.
+    /// Creates and configures a `NSView` for the view. This NSView will be the view the video is rendered onto.
     ///
-    /// - Parameter context: The `UIViewRepresentable` context.
+    /// - Parameter context: The `NSViewRepresentable` context.
     ///
-    /// - Returns: A `UIView` for displaying the video stream.
-    public func makeUIView(context: Context) -> UIView {
+    /// - Returns: A `NSView` for displaying the video stream.
+    public func makeNSView(context: Context) -> NSView {
         setupCanvasView()
     }
-    private func setupCanvasView() -> UIView {
+    private func setupCanvasView() -> NSView {
         // Create and return the remote video view
-        let canvasView = UIViewType()
+        let canvasView = NSView()
         canvas.view = canvasView
         canvas.renderMode = canvasProperties.renderMode
         canvas.cropArea = canvasProperties.cropArea
@@ -229,7 +229,7 @@ public struct AgoraVideoCanvasView: UIViewRepresentable {
     }
 
     /// Updates the Canvas view.
-    public func updateUIView(_ uiView: UIView, context: Context) {
+    public func updateNSView(_ nsView: NSView, context: Context) {
         self.updateCanvasValues()
     }
 }

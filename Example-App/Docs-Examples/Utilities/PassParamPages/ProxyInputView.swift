@@ -59,7 +59,7 @@ struct ProxyInputView<Content: HasProxyServerInput>: View {
                 channelId: channelId.trimmingCharacters(in: .whitespaces),
                 proxyType: proxyType.agoraProxyType()
             ).navigationTitle(continueTo.docTitle).toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem() {
                     GitHubButtonView(continueTo.docPath)
                 }
             }), label: {

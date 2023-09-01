@@ -26,5 +26,5 @@ The business logic for the call quality guide can be found in [CallQualityManage
 
 ## Full Documentation
 
-[Agora's full call quality guide](https://docs.agora.io/en/interactive-live-streaming/develop/ensure-channel-quality?platform=ios)
+[Agora's full call quality guide](https://docs.agora.io/en/interactive-live-streaming/develop/ensure-channel-quality?platform=macos)
 

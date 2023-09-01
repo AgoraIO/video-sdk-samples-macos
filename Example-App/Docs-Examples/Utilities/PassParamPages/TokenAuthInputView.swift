@@ -39,13 +39,13 @@ struct TokenAuthInputView<Content: HasTokenServerInput>: View {
         VStack {
             TextField("Enter channel id", text: $channelId)
                 .textFieldStyle(.roundedBorder).padding([.horizontal, .top])
-            TextField("Enter token URL", text: $tokenUrl).keyboardType(.URL)
+            TextField("Enter token URL", text: $tokenUrl)
                 .textFieldStyle(.roundedBorder).padding([.horizontal, .bottom])
             NavigationLink(destination: NavigationLazyView(continueTo.init(
                 channelId: channelId.trimmingCharacters(in: .whitespaces),
                 tokenUrl: tokenUrl.trimmingCharacters(in: .whitespaces)
             ).navigationTitle(continueTo.docTitle).toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem() {
                     GitHubButtonView(continueTo.docPath)
                 }
             }), label: {

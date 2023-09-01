@@ -75,7 +75,7 @@ struct ContentView: View {
                         }
                     }
                 }
-            }.navigationTitle(LocalizedStringKey("app_title")).navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle(LocalizedStringKey("app_title"))
         }.onAppear {
             self.productChoice = DocsAppConfig.shared.product
         }.onChange(of: self.productChoice) { newValue in

@@ -51,7 +51,7 @@ struct MultiChannelInputView<Content: HasMultiChannelInput>: View {
                 secondaryChannel: secondaryChannel.trimmingCharacters(in: .whitespaces),
                 isRelay: relayType == .relay
             ).navigationTitle(continueTo.docTitle).toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem() {
                     GitHubButtonView(continueTo.docPath)
                 }
             }), label: {

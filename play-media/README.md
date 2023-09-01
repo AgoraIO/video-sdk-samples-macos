@@ -2,4 +2,4 @@
 
 ## Full Documentation
 
-[Stream media to a channel](https://docs.agora.io/en/interactive-live-streaming/develop/play-media?platform=ios)
+[Stream media to a channel](https://docs.agora.io/en/interactive-live-streaming/develop/play-media?platform=macos)

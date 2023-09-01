@@ -40,7 +40,7 @@ struct ChannelInputView<Content: HasChannelInput>: View {
             NavigationLink(destination: NavigationLazyView(continueTo.init(
                 channelId: channelId.trimmingCharacters(in: .whitespaces)
             ).navigationTitle(continueTo.docTitle).toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem() {
                     GitHubButtonView(continueTo.docPath)
                 }
             }), label: {

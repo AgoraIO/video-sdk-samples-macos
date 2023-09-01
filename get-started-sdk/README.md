@@ -16,14 +16,14 @@ Joining and leaving the channel can be found in [GettingStartedView](GettingStar
 
 ### Creating a Canvas
 
-Creating a canvas for local or remote users in this project and example with Agora uses `AgoraRtcVideoCanvas`, and the SwiftUI class `UIViewRepresentable`. This can be found in [AgoraVideoCanvasView.swift](../agora-manager/AgoraVideoCanvasView.swift).
+Creating a canvas for local or remote users in this project and example with Agora uses `AgoraRtcVideoCanvas`, and the SwiftUI class `NSViewRepresentable`. This can be found in [AgoraVideoCanvasView.swift](../agora-manager/AgoraVideoCanvasView.swift).
 
 #### Without SwiftUI
 
-To create a canvas without the wrapper or SwiftUI, you need an `AgoraRtcVideoCanvas`, a `UIView` and an `AgoraRtcEngineKit` instance.
+To create a canvas without the wrapper or SwiftUI, you need an `AgoraRtcVideoCanvas`, a `NSView` and an `AgoraRtcEngineKit` instance.
 
-Place the `UIView` in your app where you'd like it, set the `AgoraRtcVideoCanvas.view` to the `UIView`, and call the `AgoraRtcEngineKit` methods seen in [AgoraVideoCanvasView.swift#setUserId](../agora-manager/AgoraVideoCanvasView.swift#L63-L81), depending on whether it's a local camera feed, remote, another media source, or more.
+Place the `NSView` in your app where you'd like it, set the `AgoraRtcVideoCanvas.view` to the `NSView`, and call the `AgoraRtcEngineKit` methods seen in [AgoraVideoCanvasView.swift#setUserId](../agora-manager/AgoraVideoCanvasView.swift#L63-L81), depending on whether it's a local camera feed, remote, another media source, or more.
 
 ## Full Documentation
 
-[Agora's full SDK Quickstart Guide](https://docs.agora.io/en/interactive-live-streaming/get-started/get-started-sdk?platform=ios)
+[Agora's full SDK Quickstart Guide](https://docs.agora.io/en/interactive-live-streaming/get-started/get-started-sdk?platform=macos)

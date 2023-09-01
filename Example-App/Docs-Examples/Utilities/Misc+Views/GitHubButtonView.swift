@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GitHubButtonView: View {
     let url: URL?
-    static let repoBase = "https://github.com/AgoraIO/video-sdk-samples-ios/tree/main/"
+    static let repoBase = "https://github.com/AgoraIO/video-sdk-samples-macos/tree/main/"
 
     init(_ path: String) {
         self.url = URL(string: GitHubButtonView.repoBase + path)
@@ -21,7 +21,7 @@ struct GitHubButtonView: View {
             Button(action: {
                 openURL(url)
             }, label: {
-                Image(uiImage: UIImage(
+                Image(nsImage: NSImage(
                     named: "github-mark\(colorScheme == .dark ? "-white" : "")")!
                 ).resizable().frame(width: 24, height: 24)
             })
@@ -29,9 +29,11 @@ struct GitHubButtonView: View {
     }
 
     func openURL(_ url: URL) {
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        #if os(iOS)
+        if NSApplication.shared.canOpenURL(url) {
+            NSApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+        #endif
     }
 
     @Environment(\.colorScheme) var colorScheme

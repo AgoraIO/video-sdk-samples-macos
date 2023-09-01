@@ -15,7 +15,7 @@ protocol HasEncryptionInput: View, HasDocPath {
 
 extension MediaEncryptionView: HasEncryptionInput {}
 
-/// A view that allows the user to input a channel ID encyprtion key, salt and encryption mode.
+/// A view that allows the user to input a channel ID encryption key, salt and encryption mode.
 ///
 /// The view then navigates to a view that accepts these inputs and
 /// connects to a channel with the appropriate encryption enabled.
@@ -54,7 +54,7 @@ struct EncryptionKeysInputView<Content: HasEncryptionInput>: View {
                 encryptionSalt: encryptionSalt.trimmingCharacters(in: .whitespaces),
                 encryptionMode: self.encryptionType
             ).navigationTitle(continueTo.docTitle).toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem() {
                     GitHubButtonView(continueTo.docPath)
                 }
             }), label: {
