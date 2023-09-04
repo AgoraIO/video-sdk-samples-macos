@@ -46,6 +46,7 @@ open class CustomVideoSourcePreview: NSView, ObservableObject {
     open func insertCaptureVideoPreviewLayer(previewLayer: AVCaptureVideoPreviewLayer) {
         self.previewLayer?.removeFromSuperlayer()
         previewLayer.frame = bounds
+        self.wantsLayer = true
         layer!.addSublayer(previewLayer)
         self.previewLayer = previewLayer
     }
