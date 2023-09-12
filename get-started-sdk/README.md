@@ -1,4 +1,4 @@
-#  SDK quickstart
+# SDK quickstart
 
 Video Calling enables one-to-one or small-group video chat connections with smooth, jitter-free streaming video. Agora’s Video SDK makes it easy to embed real-time video chat into web, mobile and native apps.
 
@@ -6,7 +6,9 @@ Thanks to Agora’s intelligent and global Software Defined Real-time Network (A
 
 This page shows the minimum code you need to integrate high-quality, low-latency Video Calling features into your app using Video SDK.
 
-## Topics
+## Understand the code
+
+For context on this sample, and a full explanation of the essential code snippets used in this project, read [SDK quickstart](https://docs-beta.agora.io/en/video-calling/get-started/get-started-sdk)
 
 ### Agora Logic
 
@@ -16,14 +18,14 @@ Joining and leaving the channel can be found in [GettingStartedView](GettingStar
 
 ### Creating a Canvas
 
-Creating a canvas for local or remote users in this project and example with Agora uses `AgoraRtcVideoCanvas`, and the SwiftUI class `NSViewRepresentable`. This can be found in [AgoraVideoCanvasView.swift](../agora-manager/AgoraVideoCanvasView.swift).
+Creating a canvas for local or remote users in this project and example with Agora uses `AgoraRtcVideoCanvas`, and the SwiftUI class `UIViewRepresentable`. This can be found in [AgoraVideoCanvasView.swift](../agora-manager/AgoraVideoCanvasView.swift).
 
 #### Without SwiftUI
 
-To create a canvas without the wrapper or SwiftUI, you need an `AgoraRtcVideoCanvas`, a `NSView` and an `AgoraRtcEngineKit` instance.
+To create a canvas without the wrapper or SwiftUI, you need an `AgoraRtcVideoCanvas`, a `UIView` and an `AgoraRtcEngineKit` instance.
 
-Place the `NSView` in your app where you'd like it, set the `AgoraRtcVideoCanvas.view` to the `NSView`, and call the `AgoraRtcEngineKit` methods seen in [AgoraVideoCanvasView.swift#setUserId](../agora-manager/AgoraVideoCanvasView.swift#L63-L81), depending on whether it's a local camera feed, remote, another media source, or more.
+Place the `UIView` in your app where you'd like it, set the `AgoraRtcVideoCanvas.view` to the `UIView`, and call the `AgoraRtcEngineKit` methods seen in [AgoraVideoCanvasView.swift#setUserId](../agora-manager/AgoraVideoCanvasView.swift#L63-L81), depending on whether it's a local camera feed, remote, another media source, or more.
 
-## Full Documentation
+## How to run this project
 
-[Agora's full SDK Quickstart Guide](https://docs.agora.io/en/interactive-live-streaming/get-started/get-started-sdk?platform=macos)
+To see how to run this project, read the instructions in the main [README](../README.md) or [SDK quickstart](https://docs-beta.agora.io/en/video-calling/get-started/get-started-sdk).

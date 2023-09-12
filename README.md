@@ -4,64 +4,15 @@ This app demonstrates using Agora's Video SDK for real-time communication in a S
 
 This example app is a robust and comprehensive documentation reference app for macOS, designed to enhance your productivity and understanding. It's built to be flexible, easily extensible, and beginner-friendly.
 
-To understand the contents better, you can go to [Agora's Documentation](https://docs.agora.io), which explains each example in more detail.
+To understand the contents better, you can go to [Agora's Documentation](https://docs.To understand the contents better, you can go to [Agora's Documentation](https://docs.agora.io), which explains each example in more detail.
 
-## Prerequisites
+- [Samples](#samples-)
+- [Prerequisites](#prerequisites)
+- [Run this project](#run-this-project)
+- [Screenshots](#screenshots)
+- [Contact](#contact)
 
-Before getting started with this example app, please ensure you have the following software installed on your machine:
-
-- Xcode 13.0 or later.
-- Swift 5.5 or later.
-- A device running macOS 10.11 or later.
-
-## Run the App
-
-1. Clone the repository
-
-To clone the repository to your local machine, open Terminal and navigate to the directory where you want to clone the repository. Then, use the following command:
-
-    ```sh
-    git clone https://github.com/AgoraIO/video-sdk-samples-macos.git
-    ```
-
-    If you are using a device using the ARM architecture (e.g. MacBook Air M1, M2) take the following additional steps:
-
-        1. Download the latest jq binary for macOS from their [official website](https://jqlang.github.io/jq/download/) and save it on the `/Documents` folder.
-
-        1. Open a terminal window and input the following command:
-
-        ```bash
-        sudo ln -s /Users/<your_macos_user_name>/Documents/<file_name_of_downloaded_jq> jq
-        ```
-
-        1. Restart your device for the changes to take effect.
-
-2. Open the project
-
-Navigate to [Example-App](Example-App), and open [Docs-Examples.xcodeproj](Example-App/Docs-Examples.xcodeproj).
-
-> All dependencies are installed with Swift Package Manager, so will be fetched automatically by Xcode.
-
-3. Update Signing
-
-As with any Xcode project, head to the target, "Signing & Capabilities", and add your team, and modify the bundle identifier to make it unique.
-
-4. Modify config.json
-
-The file [config.json](agora-manager/config.json) is locaed in the [agora-manager](agora-manager) directory, and must have at least the following modifications made:
-
-- appId: Update to your Agora Project ID, found at https://console.agora.io
-
-You may also need to make these modifications:
-
-- rtcToken: Add in your temporary token if you need and have generated one
-- tokenUrl: Add the URL to your token server if you have one; there are a few one-click deployment options [here](https://github.com/AgoraIO-Community/agora-token-service).
-
-5. Build and run the project
-
-To build and run the project, use the build button (Cmd+R) in Xcode. Select your preferred device/simulator as the scheme.
-
-## Examples
+## Samples
 
 You'll find numerous examples illustrating the functionality and features of this reference app in the root directory. Each example is self-contained in its own directory, providing an easy way to understand how to use the app. For more information about each example, see the README file within its directory.
 
@@ -85,6 +36,57 @@ You'll find numerous examples illustrating the functionality and features of thi
 
 - [Geofencing](./geofencing/)
 - [Virtual background](./virtual-background/)
+
+## Prerequisites
+
+Before getting started with this example app, please ensure you have the following software installed on your machine:
+
+- Xcode 13.0 or later.
+- Swift 5.5 or later.
+- A device running macOS 10.11 or later.
+
+## Run the App
+
+1. **Clone the repository**
+
+   1. To clone the repository to your local machine, open Terminal and navigate to the directory where you want to 
+   clone the repository. Then, use the following command:
+
+        ```sh
+        git clone https://github.com/AgoraIO/video-sdk-samples-macos.git
+        ```
+
+   1. If you are using a device using the ARM architecture such as the MacBook Air M1, install [jq](https://jqlang.github.io/jq/download/) and add it to your `PATH`. 
+
+
+2. **Open the project**
+
+    Navigate to [Example-App](Example-App), and open [Docs-Examples.xcodeproj](Example-App/Docs-Examples.xcodeproj).
+    
+    > All dependencies are installed with Swift Package Manager,  and are fetched automatically by Xcode.
+
+3. **Update Signing**
+
+    As with any Xcode project, head to the target, "Signing & Capabilities", and add your team, and modify the bundle identifier to make it unique.
+
+4.  **Modify the project configuration**
+
+   The app loads connection parameters from the [`config.json`](./agora-manager/config.json) file. Ensure that the 
+   file is populated with the required parameter values before running the application.
+
+    - `uid`: The user ID associated with the application.
+    - `appId`: (Required) The unique ID for the application obtained from [Agora Console](https://console.agora.io). 
+    - `channelName`: The default name of the channel to join.
+    - `rtcToken`:An token generated for `channelName`. You generate a temporary token using the [Agora token builder](https://agora-token-generator-demo.vercel.app/).
+    - `serverUrl`: The URL for the token generator. See [Secure authentication with tokens](authentication-workflow) for information on how to set up a token server.
+    - `tokenExpiryTime`: The time in seconds after which a token expires.
+
+   If a valid `serverUrl` is provided, all samples use the token server to obtain a token except the **SDK quickstart** project that uses the `rtcToken`. If a `serverUrl` is not specified, all samples except **Secure authentication with tokens** use the `rtcToken` from `config.json`.
+
+5. **Build and run the project**
+
+   To build and run the project, use the build button (Cmd+R) in Xcode. Select your preferred device/simulator as the scheme.
+
 
 ## Screenshots
 
