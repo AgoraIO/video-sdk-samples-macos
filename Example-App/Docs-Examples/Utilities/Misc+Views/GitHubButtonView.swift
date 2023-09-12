@@ -34,6 +34,11 @@ struct GitHubButtonView: View {
             NSApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         #endif
+        #if os(macOS)
+        if NSWorkspace.shared.urlForApplication(toOpen: url) != nil {
+            NSWorkspace.shared.open(url)
+        }
+        #endif
     }
 
     @Environment(\.colorScheme) var colorScheme
