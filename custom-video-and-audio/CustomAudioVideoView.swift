@@ -69,10 +69,21 @@ class CustomAudioVideoManager: AgoraManager, AgoraCameraSourcePushDelegate {
     @discardableResult
     override func joinChannel(
         _ channel: String, token: String? = nil, uid: UInt = 0, info: String? = nil
-    ) -> Int32 {
+    ) async -> Int32 {
         defer { pushSource?.startCapture(ofDevice: captureDevice) }
 
-        return super.joinChannel(channel, token: token, uid: uid, info: info)
+        return await super.joinChannel(channel, token: token, uid: uid, info: info)
+    }
+
+    @discardableResult
+    override func leaveChannel(
+        leaveChannelBlock: ((AgoraChannelStats) -> Void)? = nil,
+        destroyInstance: Bool = true
+    ) -> Int32 {
+        // Need to stop the capture on exit
+        pushSource?.stopCapture()
+        pushSource = nil
+        return super.leaveChannel(leaveChannelBlock: leaveChannelBlock, destroyInstance: destroyInstance)
     }
 
     override func rtcEngine(
@@ -90,24 +101,23 @@ class CustomAudioVideoManager: AgoraManager, AgoraCameraSourcePushDelegate {
 struct CustomAudioVideoView: View {
     /// The Agora SDK manager for handling custom audio and video operations.
     @ObservedObject var agoraManager: CustomAudioVideoManager
-    /// The channel ID to join.
-    let channelId: String
     var customPreview = CustomVideoSourcePreview()
 
     var body: some View {
-        ScrollView {
-            VStack {
-                // The local custom camera view
-                AgoraCustomVideoCanvasView(canvas: customPreview, previewLayer: agoraManager.previewLayer)
-                    .aspectRatio(contentMode: .fit).cornerRadius(10)
-                // All remote camera views
-                ForEach(Array(agoraManager.allUsers), id: \.self) { uid in
-                    AgoraVideoCanvasView(manager: agoraManager, uid: uid)
-                        .aspectRatio(contentMode: .fit).cornerRadius(10)
-                }
-            }.padding(20)
+        ZStack {
+            ScrollView {
+                VStack {
+                    // The local custom camera view
+                    AgoraCustomVideoCanvasView(
+                        canvas: customPreview, previewLayer: agoraManager.previewLayer
+                    ).aspectRatio(contentMode: .fit).cornerRadius(10)
+                    // All remote camera views
+                    self.innerScrollingVideos
+                }.padding(20)
+            }
+            ToastView(message: $agoraManager.label)
         }.onAppear {
-            await agoraManager.joinChannel(channelId)
+            await agoraManager.joinChannel(DocsAppConfig.shared.channel)
         }.onDisappear {
             agoraManager.leaveChannel()
         }
@@ -119,9 +129,11 @@ struct CustomAudioVideoView: View {
     ///   - channelId: The channel ID to join.
     ///   - customCamera: The AVCaptureDevice to be used for custom camera capture.
     init(channelId: String, customCamera: AVCaptureDevice) {
-        self.channelId = channelId
+        DocsAppConfig.shared.channel = channelId
         self.agoraManager = CustomAudioVideoManager(
             appId: DocsAppConfig.shared.appId, role: .broadcaster, captureDevice: customCamera
         )
     }
+    static let docPath = getFolderName(from: #file)
+    static let docTitle = LocalizedStringKey("custom-video-and-audio-title")
 }

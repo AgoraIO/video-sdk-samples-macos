@@ -8,6 +8,7 @@
 #if canImport(UIKit)
 import UIKit
 #endif
+import AppKit
 import AVFoundation
 import AgoraRtcKit
 
@@ -50,7 +51,6 @@ open class AgoraCameraSourcePush: NSObject {
         self.delegate = delegate
 
         self.captureSession = AVCaptureSession()
-        self.captureSession.usesApplicationAudioSession = false
 
         let captureOutput = AVCaptureVideoDataOutput()
         captureOutput.videoSettings = [

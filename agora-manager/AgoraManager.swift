@@ -6,40 +6,51 @@
 //
 
 import AgoraRtcKit
+import SwiftUI
 
 /// ``AgoraManager`` is a class that provides an interface to the Agora RTC Engine Kit.
 /// It conforms to the `ObservableObject` and `AgoraRtcEngineDelegate` protocols.
 ///
 /// Use AgoraManager to set up and manage Agora RTC sessions, manage the client's role,
 /// and control the client's connection to the Agora RTC server.
-open class AgoraManager: NSObject, ObservableObject, AgoraRtcEngineDelegate {
+open class AgoraManager: NSObject, ObservableObject {
+
+    // MARK: - Properties
+
     /// The Agora App ID for the session.
     public let appId: String
     /// The client's role in the session.
     public var role: AgoraClientRole = .audience {
         didSet { agoraEngine.setClientRole(role) }
     }
-    /// Integer ID of the local user.
-    @Published public var localUserId: UInt = 0
-    /// The Agora RTC Engine Kit for the session.
-    public var agoraEngine: AgoraRtcEngineKit {
-        let eng = AgoraRtcEngineKit.sharedEngine(withAppId: appId, delegate: self)
-        eng.enableVideo()
-        eng.setClientRole(role)
-        return eng
-    }
 
     /// The set of all users in the channel.
     @Published public var allUsers: Set<UInt> = []
 
-    /// Initializes a new instance of `AgoraManager` with the specified app ID and client role.
-    ///
-    /// - Parameters:
-    ///   - appId: The Agora App ID for the session.
-    ///   - role: The client's role in the session. The default value is `.audience`.
-    public init(appId: String, role: AgoraClientRole = .audience) {
-        self.appId = appId
-        self.role = role
+    @Published var label: String?
+
+    /// Integer ID of the local user.
+    @Published public var localUserId: UInt = 0
+
+    // MARK: - Agora Engine Functions
+
+    private var engine: AgoraRtcEngineKit?
+    /// The Agora RTC Engine Kit for the session.
+    public var agoraEngine: AgoraRtcEngineKit {
+        if let engine { return engine }
+        let engine = setupEngine()
+        self.engine = engine
+        return engine
+    }
+
+    open func setupEngine() -> AgoraRtcEngineKit {
+        print(appId)
+        let eng = AgoraRtcEngineKit.sharedEngine(withAppId: appId, delegate: self)
+        if DocsAppConfig.shared.product != .voice {
+            eng.enableVideo()
+        } else { eng.enableAudio() }
+        eng.setClientRole(role)
+        return eng
     }
 
     /// Joins a channel, starting the connection to an RTC session.
@@ -52,29 +63,46 @@ open class AgoraManager: NSObject, ObservableObject, AgoraRtcEngineDelegate {
     @discardableResult
     open func joinChannel(
         _ channel: String, token: String? = nil, uid: UInt = 0, info: String? = nil
-    ) -> Int32 {
-        self.agoraEngine.joinChannel(byToken: token, channelId: channel, info: info, uid: uid)
+    ) async -> Int32 {
+        if await !AgoraManager.checkForPermissions() {
+            DispatchQueue.main.async {
+                self.label = """
+                Camera and microphone permissions were not granted.
+                Check your security settings and try again.
+                """
+            }
+            return -3
+        }
+
+        return self.agoraEngine.joinChannel(
+            byToken: token, channelId: channel,
+            info: info, uid: uid
+        )
     }
 
     @discardableResult
-    open func joinChannel(_ channel: String) async -> Int32 {
-        if let rtcToken = DocsAppConfig.shared.rtcToken, !rtcToken.isEmpty {
-            return self.joinChannel(
-                channel, token: DocsAppConfig.shared.rtcToken,
-                uid: DocsAppConfig.shared.uid, info: nil
-            )
-        }
-        var token: String?
+    /// This method is used by this app specifically. If there is a tokenURL,
+    /// it will attempt to retrieve a token from there.
+    /// Otherwise it will simply apply the provided token in config.json or nil.
+    ///
+    /// - Parameters:
+    ///   - channel: Name of the channel to join.
+    ///   - uid: User ID of the local user. This can be 0 to allow the engine to automatically assign an ID.
+    /// - Returns: Error code, 0 = success, &lt; 0 = failure.
+    internal func joinChannel(_ channel: String, uid: UInt? = nil) async -> Int32 {
+        let userId = uid ?? DocsAppConfig.shared.uid
+        var token = DocsAppConfig.shared.rtcToken
         if !DocsAppConfig.shared.tokenUrl.isEmpty {
             do {
                 token = try await self.fetchToken(
-                    from: DocsAppConfig.shared.tokenUrl, channel: channel, role: self.role
+                    from: DocsAppConfig.shared.tokenUrl, channel: channel,
+                    role: self.role, userId: userId
                 )
             } catch {
                 print("token server fetch failed: \(error.localizedDescription)")
             }
         }
-        return self.joinChannel(channel, token: token, uid: DocsAppConfig.shared.uid, info: nil)
+        return await self.joinChannel(channel, token: token, uid: userId, info: nil)
     }
 
     /// Leaves the channel and stops the preview for the session.
@@ -86,15 +114,32 @@ open class AgoraManager: NSObject, ObservableObject, AgoraRtcEngineDelegate {
     /// This method also empties all entries in ``allUsers``,
     @discardableResult
     open func leaveChannel(
-        leaveChannelBlock: ((AgoraChannelStats) -> Void)? = nil
+        leaveChannelBlock: ((AgoraChannelStats) -> Void)? = nil,
+        destroyInstance: Bool = true
     ) -> Int32 {
         let leaveErr = self.agoraEngine.leaveChannel(leaveChannelBlock)
         self.agoraEngine.stopPreview()
-        defer { AgoraRtcEngineKit.destroy() }
+        defer { if destroyInstance { AgoraRtcEngineKit.destroy() } }
         self.allUsers.removeAll()
         return leaveErr
     }
 
+    // MARK: - Setup
+
+    /// Initializes a new instance of `AgoraManager` with the specified app ID and client role.
+    ///
+    /// - Parameters:
+    ///   - appId: The Agora App ID for the session.
+    ///   - role: The client's role in the session. The default value is `.audience`.
+    public init(appId: String, role: AgoraClientRole = .audience) {
+        self.appId = appId
+        self.role = role
+    }
+}
+
+// MARK: - Delegate Methods
+
+extension AgoraManager: AgoraRtcEngineDelegate {
     /// The delegate is telling us that the local user has successfully joined the channel.
     /// - Parameters:
     ///    - engine: The Agora RTC engine kit object.

@@ -9,6 +9,9 @@ import SwiftUI
 import AgoraRtcKit
 
 public extension AgoraManager {
+
+    // MARK: - Token Request
+
     /// Fetches a token from the specified token server URL.
     ///
     /// - Parameters:
@@ -35,23 +38,54 @@ public extension AgoraManager {
 
         return tokenResponse.rtcToken
     }
+
+    /// A Codable struct representing the token server response.
+    struct TokenResponse: Codable {
+        /// Value of the RTC Token.
+        public let rtcToken: String
+    }
+
+    // MARK: - Agora Engine Functions
+
+    /// Fetch a token from the token server, and then join the channel using Agora SDK.
+    /// - Returns: A boolean, for whether or not the token fetching was successful.
+    /// - Parameters:
+    ///   - tokenUrl: The URL of the token server.
+    ///   - channel: The name of the channel for which the token will be used.
+    fileprivate func fetchTokenThenJoin(tokenUrl: String, channel: String) async -> Bool {
+        if let token = try? await self.fetchToken(
+            from: tokenUrl, channel: channel,
+            role: role, userId: 0
+        ) {
+            return await self.joinChannel(
+                channel, token: token, uid: 0
+            ) == 0
+        } else { return false }
+    }
+
+    // MARK: - Delegate Methods
+
+    func rtcEngine(
+        _ engine: AgoraRtcEngineKit, tokenPrivilegeWillExpire token: String
+    ) {
+        Task {
+            if let token = try? await fetchToken(
+                from: DocsAppConfig.shared.tokenUrl,
+                channel: DocsAppConfig.shared.channel,
+                role: .broadcaster
+            ) { self.agoraEngine.renewToken(token) }
+        }
+    }
 }
 
-/// A Codable struct representing the token server response.
-public struct TokenResponse: Codable {
-    /// Value of the RTC Token.
-    public let rtcToken: String
-}
+// MARK: - UI
 
 /// A view that authenticates the user with a token and joins them to a channel using Agora SDK.
 struct TokenAuthenticationView: View {
-
     /// The Agora SDK manager.
-    @ObservedObject var agoraManager = AgoraManager(appId: DocsAppConfig.shared.appId, role: .broadcaster)
-    /// The channel ID to join.
-    public let channelId: String
-    /// The URL of the token server.
-    public let tokenUrl: String
+    @ObservedObject var agoraManager = AgoraManager(
+        appId: DocsAppConfig.shared.appId, role: .broadcaster
+    )
     /// A flag indicating whether the token has been successfully fetched.
     @State public var tokenPassed: Bool?
 
@@ -61,44 +95,32 @@ struct TokenAuthenticationView: View {
     ///   - channelId: The channel ID to join.
     ///   - tokenUrl: The URL of the token server.
     public init(channelId: String, tokenUrl: String) {
-        self.channelId = channelId
-        self.tokenUrl = tokenUrl
+        DocsAppConfig.shared.channel = channelId
+        DocsAppConfig.shared.tokenUrl = tokenUrl
     }
 
     var body: some View {
-        Group {
-            if tokenPassed == nil {
-                ProgressView()
-            } else if tokenPassed == true {
-                ScrollView {
-                    VStack {
-                        ForEach(Array(agoraManager.allUsers), id: \.self) { uid in
-                            AgoraVideoCanvasView(manager: agoraManager, uid: uid)
-                                .aspectRatio(contentMode: .fit).cornerRadius(10)
-                        }
-                    }.padding(20)
+        ZStack {
+            Group {
+                if tokenPassed == nil {
+                    ProgressView()
+                } else if tokenPassed == true {
+                    self.basicScrollingVideos
+                } else {
+                    Text("Error fetching token.")
                 }
-            } else {
-                Text("Error fetching token.")
             }
+            ToastView(message: $agoraManager.label)
         }.onAppear {
-            /// On joining, call ``TokenAuthenticationView/fetchTokenThenJoin()``.
-            Task { tokenPassed = await fetchTokenThenJoin() }
+            /// On joining, call ``AgoraManager/fetchTokenThenJoin(tokenUrl:channel:)``.
+            tokenPassed = await agoraManager.fetchTokenThenJoin(
+                tokenUrl: DocsAppConfig.shared.tokenUrl,
+                channel: DocsAppConfig.shared.channel
+            )
         }.onDisappear { agoraManager.leaveChannel() }
     }
-
-    /// Fetch a token from the token server, and then join the channel using Agora SDK
-    /// - Returns: A boolean, for whether or not the token fetching was successful.
-    func fetchTokenThenJoin() async -> Bool {
-        if !channelId.isEmpty,
-           let token = try? await self.agoraManager.fetchToken(
-            from: self.tokenUrl, channel: self.channelId,
-            role: self.agoraManager.role, userId: 0
-        ) {
-            self.agoraManager.joinChannel(channelId, token: token)
-            return true
-        } else { return false }
-    }
+    static let docPath = getFolderName(from: #file)
+    static let docTitle = LocalizedStringKey("authentication-workflow-title")
 }
 
 struct TokenAuthenticationView_Previews: PreviewProvider {

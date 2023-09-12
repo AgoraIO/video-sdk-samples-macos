@@ -10,18 +10,18 @@ import AVKit
 import AgoraRtcKit
 
 /// SwiftUI representable for a ``CustomVideoSourcePreview``.
-public struct AgoraCustomVideoCanvasView: UIViewRepresentable {
+public struct AgoraCustomVideoCanvasView: NSViewRepresentable {
     /// The `AgoraRtcVideoCanvas` object that represents the video canvas for the view.
     @StateObject var canvas = CustomVideoSourcePreview()
 
     /// Preview layer where the camera frames come into
     var previewLayer: AVCaptureVideoPreviewLayer?
 
-    /// Creates and configures a `UIView` for the view. This UIView will be the view the video is rendered onto.
-    /// - Parameter context: The `UIViewRepresentable` context.
-    /// - Returns: A `UIView` for displaying the custom local video stream.
-    public func makeUIView(context: Context) -> UIView { setupCanvasView() }
-    func setupCanvasView() -> UIView { canvas }
+    /// Creates and configures a `NSView` for the view. This NSView will be the view the video is rendered onto.
+    /// - Parameter context: The `NSViewRepresentable` context.
+    /// - Returns: A `NSView` for displaying the custom local video stream.
+    public func makeNSView(context: Context) -> NSView { setupCanvasView() }
+    func setupCanvasView() -> NSView { canvas }
 
     /// Updates the `AgoraRtcVideoCanvas` object for the view with new values, if necessary.
     func updateCanvasValues() {
@@ -31,13 +31,13 @@ public struct AgoraCustomVideoCanvasView: UIViewRepresentable {
     }
 
     /// Updates the Canvas view.
-    public func updateUIView(_ uiView: UIView, context: Context) {
+    public func updateNSView(_ nsView: NSView, context: Context) {
         self.updateCanvasValues()
     }
 }
 
 /// View to show the custom camera feed for the local camera feed.
-open class CustomVideoSourcePreview: UIView, ObservableObject {
+open class CustomVideoSourcePreview: NSView, ObservableObject {
     /// Layer that displays video from a camera device.
     open private(set) var previewLayer: AVCaptureVideoPreviewLayer?
 
@@ -46,31 +46,28 @@ open class CustomVideoSourcePreview: UIView, ObservableObject {
     open func insertCaptureVideoPreviewLayer(previewLayer: AVCaptureVideoPreviewLayer) {
         self.previewLayer?.removeFromSuperlayer()
         previewLayer.frame = bounds
-        layer.addSublayer(previewLayer)
+        self.wantsLayer = true
+        layer!.addSublayer(previewLayer)
         self.previewLayer = previewLayer
     }
 
     /// Tells the delegate a layer's bounds have changed.
     /// - Parameter layer: The layer that requires layout of its sublayers.
-    override open func layoutSublayers(of layer: CALayer) {
-        super.layoutSublayers(of: layer)
+    override open func layout() {
+        super.layoutSubtreeIfNeeded()
         previewLayer?.frame = bounds
         if let connection = self.previewLayer?.connection {
-            let currentDevice = UIDevice.current
-            let orientation: UIDeviceOrientation = currentDevice.orientation
             let previewLayerConnection: AVCaptureConnection = connection
 
             if previewLayerConnection.isVideoOrientationSupported {
                 self.updatePreviewLayer(
-                    layer: previewLayerConnection,
-                    orientation: orientation.toCaptureVideoOrientation()
+                    layer: previewLayerConnection
                 )
             }
         }
     }
 
-    private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation) {
-        layer.videoOrientation = orientation
+    private func updatePreviewLayer(layer: AVCaptureConnection) {
         self.previewLayer?.frame = self.bounds
     }
 }

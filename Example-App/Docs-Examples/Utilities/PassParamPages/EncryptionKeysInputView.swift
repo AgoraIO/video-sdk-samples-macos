@@ -9,21 +9,19 @@ import SwiftUI
 import AgoraRtcKit
 
 /// A protocol for views that require an encryption key, salt and mode.
-public protocol HasEncryptionInput: View {
-    /// The channel ID to join.
-    var channelId: String { get }
+protocol HasEncryptionInput: View, HasDocPath {
     init(channelId: String, encryptionKey: String, encryptionSalt: String, encryptionMode: AgoraEncryptionMode)
 }
 
 extension MediaEncryptionView: HasEncryptionInput {}
 
-/// A view that allows the user to input a channel ID encyprtion key, salt and encryption mode.
+/// A view that allows the user to input a channel ID encryption key, salt and encryption mode.
 ///
 /// The view then navigates to a view that accepts these inputs and
 /// connects to a channel with the appropriate encryption enabled.
 /// The `EncryptionKeysInputView` takes a generic parameter `Content`
 /// which conforms to the `HasEncryptionInput` protocol.
-public struct EncryptionKeysInputView<Content: HasEncryptionInput>: View {
+struct EncryptionKeysInputView<Content: HasEncryptionInput>: View {
     /// The channel ID entered by the user.
     @State private var channelId: String = DocsAppConfig.shared.channel
     /// A 32-byte string for encryption.
@@ -50,17 +48,22 @@ public struct EncryptionKeysInputView<Content: HasEncryptionInput>: View {
                     Text(option.description).tag(option)
                 }
             }.pickerStyle(MenuPickerStyle()).textFieldStyle(.roundedBorder).padding()
-            NavigationLink {
-                continueTo.init(
-                    channelId: channelId.trimmingCharacters(in: .whitespaces),
-                    encryptionKey: encryptionKey.trimmingCharacters(in: .whitespaces),
-                    encryptionSalt: encryptionSalt.trimmingCharacters(in: .whitespaces),
-                    encryptionMode: self.encryptionType
-                )
-            } label: {
-                Text("Join Channel")
-            }.buttonStyle(.borderedProminent)
+            NavigationLink(destination: NavigationLazyView(continueTo.init(
+                channelId: channelId.trimmingCharacters(in: .whitespaces),
+                encryptionKey: encryptionKey.trimmingCharacters(in: .whitespaces),
+                encryptionSalt: encryptionSalt.trimmingCharacters(in: .whitespaces),
+                encryptionMode: self.encryptionType
+            ).navigationTitle(continueTo.docTitle).toolbar {
+                ToolbarItem() {
+                    GitHubButtonView(continueTo.docPath)
+                }
+            }), label: {
+                Text(LocalizedStringKey("params-continue-button"))
+            }).buttonStyle(.borderedProminent)
                 .disabled(channelId.isEmpty || encryptionKey.isEmpty || encryptionSalt.isEmpty)
+                .navigationTitle("Encryption Key Input")
+        }.onAppear {
+            channelId = DocsAppConfig.shared.channel
         }
     }
 }

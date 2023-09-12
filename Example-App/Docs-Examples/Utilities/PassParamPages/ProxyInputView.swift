@@ -9,9 +9,7 @@ import SwiftUI
 import AgoraRtcKit
 
 /// A protocol for views that require a proxy type for cloud proxy.
-public protocol HasProxyServerInput: View {
-    /// The channel ID to join.
-    var channelId: String { get }
+protocol HasProxyServerInput: HasDocPath {
     init(channelId: String, proxyType: AgoraCloudProxyType)
 }
 
@@ -40,7 +38,7 @@ enum ProxyType: String, CaseIterable, Identifiable {
 /// It shows two input fields for entering the channel ID and type of proxy server, respectively,
 /// and a navigation link that navigates to `Content` when the "Join Channel" button is pressed.
 /// The navigation link is disabled if the channel name is empty.
-public struct ProxyInputView<Content: HasProxyServerInput>: View {
+struct ProxyInputView<Content: HasProxyServerInput>: View {
     /// The channel ID entered by the user.
     @State private var channelId: String = DocsAppConfig.shared.channel
     /// The proxy type chosen by the user.
@@ -57,17 +55,23 @@ public struct ProxyInputView<Content: HasProxyServerInput>: View {
             Picker("Choose Proxy Type", selection: $proxyType) {
                 ForEach(ProxyType.allCases) { Text($0.rawValue).tag($0) }
             }.pickerStyle(SegmentedPickerStyle()).padding()
-            NavigationLink(destination: continueTo.init(
+            NavigationLink(destination: NavigationLazyView(continueTo.init(
                 channelId: channelId.trimmingCharacters(in: .whitespaces),
                 proxyType: proxyType.agoraProxyType()
-            ), label: {
-                Text("Join Channel")
+            ).navigationTitle(continueTo.docTitle).toolbar {
+                ToolbarItem() {
+                    GitHubButtonView(continueTo.docPath)
+                }
+            }), label: {
+                Text(LocalizedStringKey("params-continue-button"))
             }).disabled(channelId.isEmpty)
                 .buttonStyle(.borderedProminent)
             Spacer()
-            Text("Make sure you have enabled Cloud Proxy in Agora's Console")
+            Text("Make sure you have enabled Cloud Proxy in Agora's Console.")
                 .font(.callout).foregroundColor(.accentColor).multilineTextAlignment(.center)
-        }
+        }.onAppear {
+            channelId = DocsAppConfig.shared.channel
+        }.navigationTitle("Proxy Input")
     }
 }
 

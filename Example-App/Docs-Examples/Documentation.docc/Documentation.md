@@ -8,16 +8,32 @@ Take a look through each class to see how to implement all the features with Ago
 
 ## Topics
 
-### Getting Started
+### Get started
 
 - ``GettingStartedView``
+- ``AgoraManager``
+- ``AgoraVideoCanvasView``
 
-### Develop
+### Core functionality
 
 - ``TokenAuthenticationView``
 - ``CallQualityView``
+- ``CloudProxyView``
+- ``MediaEncryptionView``
+- ``ScreenShareAndVolumeView``
+- ``CustomAudioVideoView``
 
-### Passing Parameters
+### Passing parameters
 
 - ``ChannelInputView``
 - ``TokenAuthInputView``
+- ``EncryptionKeysInputView``
+- ``CustomCameraInputView``
+- ``ProxyInputView``
+
+### AgoraManager subclasses
+
+- ``CallQualityManager``
+- ``CloudProxyManager``
+- ``ScreenShareVolumeManager``
+- ``CustomAudioVideoManager``

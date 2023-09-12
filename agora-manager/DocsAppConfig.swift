@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 public struct DocsAppConfig: Codable {
-    static var shared: DocsAppConfig {
+    static var shared: DocsAppConfig = {
         guard let fileUrl = Bundle.main.url(forResource: "config", withExtension: "json"),
               let jsonData  = try? Data(contentsOf: fileUrl) else { fatalError() }
 
@@ -21,7 +21,7 @@ public struct DocsAppConfig: Codable {
             obj.rtcToken = nil
         }
         return obj
-    }
+    }()
 
     var uid: UInt
     // APP ID from https://console.agora.io
@@ -46,4 +46,19 @@ public struct DocsAppConfig: Codable {
     var tokenUrl: String
     /// ID used for screen shares by default
     var screenShareId: UInt
+    /// Choose product type from "rtc", "ilr", "voice". See ``RtcProducts``.
+    var product: RtcProducts
+}
+
+enum RtcProducts: String, CaseIterable, Codable {
+    case rtc
+    case ils
+    case voice
+    var description: String {
+        switch self {
+        case .rtc: return "Video Calling"
+        case .ils: return "Interactive Live Streaming"
+        case .voice: return "Voice Calling"
+        }
+    }
 }

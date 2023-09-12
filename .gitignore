@@ -50,3 +50,5 @@ Package.resolved
 docs/
 docbuild/
 *.zip
+
+agora-manager/config.json

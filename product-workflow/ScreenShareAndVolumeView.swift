@@ -1,5 +1,5 @@
 //
-//  CallQualityView.swift
+//  ScreenShareAndVolumeView.swift
 //  Docs-Examples
 //
 //  Created by Max Cobb on 03/04/2023.
@@ -29,8 +29,8 @@ class ScreenShareVolumeManager: AgoraManager {
     ///   - channel: Channel to join
     /// - Returns: Join channel error code. 0 = Success, &lt;0 = Failure
     @discardableResult
-    override func joinChannel(_ channel: String) async -> Int32 {
-        let rtnCode = await super.joinChannel(channel)
+    override func joinChannel(_ channel: String, uid: UInt? = nil) async -> Int32 {
+        let rtnCode = await super.joinChannel(channel, uid: uid)
 
         // suiteName is the App Group assigned to the main app and the broadcast extension.
         // This sets the channel name so the broadcast extension can join the same channel.
@@ -64,11 +64,9 @@ struct ScreenShareAndVolumeView: View {
     @ObservedObject var agoraManager = ScreenShareVolumeManager(
         appId: DocsAppConfig.shared.appId, role: .broadcaster
     )
-    /// The channel ID to join.
-    let channelId: String
 
     var body: some View {
-        VStack {
+        ZStack {
             ScrollView {
                 VStack {
                     ForEach(Array(agoraManager.allUsers), id: \.self) { uid in
@@ -82,13 +80,14 @@ struct ScreenShareAndVolumeView: View {
                             }
                     }
                 }.padding(20)
-            }.onAppear { await agoraManager.joinChannel(channelId)
-            }.onDisappear { agoraManager.leaveChannel() }
-            #if os(iOS)
-            Group { agoraManager.broadcastPicker }
-                .frame(height: 44).padding().background(.tertiary)
-            #endif
-        }
+            }
+            ToastView(message: $agoraManager.label)
+        }.onAppear { await agoraManager.joinChannel(DocsAppConfig.shared.channel)
+        }.onDisappear { agoraManager.leaveChannel() }
+        #if os(iOS)
+        Group { agoraManager.broadcastPicker }
+            .frame(height: 44).padding().background(.tertiary)
+        #endif
     }
 
     private func volumeBinding(for key: UInt) -> Binding<Double> {
@@ -101,6 +100,8 @@ struct ScreenShareAndVolumeView: View {
         )
     }
     init(channelId: String) {
-        self.channelId = channelId
+        DocsAppConfig.shared.channel = channelId
     }
+    static let docPath = getFolderName(from: #file)
+    static let docTitle = LocalizedStringKey("product-workflow-title")
 }
